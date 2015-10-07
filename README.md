@@ -1,5 +1,7 @@
 # Pathfinding Workshop
 
+![Demonstration of Pathfinding](pathfinding.gif)
+
 ## Objectives
 
 To write a [pathfinding](https://en.wikipedia.org/wiki/Pathfinding) algorithm to get from the player start to goal.

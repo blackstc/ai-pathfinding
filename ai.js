@@ -40,7 +40,8 @@ class Ai {
 		this.player = player;
 	}
 	tick () {
-		return false;
+		//This method is repeated once every second.
+		this.player.move('down');
 	}
 }
 

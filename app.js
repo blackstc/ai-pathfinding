@@ -33,12 +33,11 @@ var board3 = [
 	'    !'
 ];
 
-var board = new Board(board2);
+var board = new Board(board1);
 var player = new Player(board);
 var ai = new Ai(player);
 
 // run the AI
 var frame = setInterval(function () {
-	while(ai.tick()) {}
-	clearInterval(frame);
-}, 500);
+	ai.tick();
+}, 1000);

@@ -10,32 +10,39 @@ class Player  {
 		this._board.visit(this._location);
 	}
 	move (direction) {
+		var successfulMove = false;
 		if (direction === 'up') {
 			var newLocation = {x:this._location.x, y:this._location.y-1};
 			if (this._board.visit(newLocation)) {
+				successfulMove = true;
 				this._location = newLocation;
 			}
 		} else if (direction === 'down') {
 			var newLocation = {x:this._location.x, y:this._location.y+1};
 			if (this._board.visit(newLocation)) {
+				successfulMove = true;
 				this._location = newLocation;
 			}
 		} else if (direction === 'left') {
 			var newLocation = {x:this._location.x-1, y:this._location.y};
 			if (this._board.visit(newLocation)) {
+				successfulMove = true;
 				this._location = newLocation;
 			}
 		} else if (direction === 'right') {
 			var newLocation = {x:this._location.x+1, y:this._location.y};
 			if (this._board.visit(newLocation)) {
+				successfulMove = true;
 				this._location = newLocation;
 			}
 		}
 		var neighbors = this.explore();
 		if (neighbors.here === 'goal') {
-			var $board = $('#board');
-			$board.prepend('<h1>YOU MADE IT TO THE GOAL!</h1>');
+			var $win = $('#win');
+			$win.empty();
+			$win.html('<h1>YOU MADE IT TO THE GOAL!</h1>');
 		}
+		return successfulMove;
 	}
 	explore () {
 		var cell = this._board.getCell(this._location.x, this._location.y);

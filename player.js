@@ -8,9 +8,15 @@ class Player  {
 		this._board = board;
 		this._location = this._board.getPlayerStartPosition();
 		this._board.visit(this._location);
+		this._moves = 0;
+		this._hasWon = false;
 	}
 	move (direction) {
 		var successfulMove = false;
+		if (this._hasWon) {
+			return;
+		}
+		this._moves += 1;
 		if (direction === 'up') {
 			var newLocation = {x:this._location.x, y:this._location.y-1};
 			if (this._board.visit(newLocation)) {
@@ -41,6 +47,8 @@ class Player  {
 			var $win = $('#win');
 			$win.empty();
 			$win.html('<h1>YOU MADE IT TO THE GOAL!</h1>');
+			$win.append(`<h2>It took you ${this._moves} moves.</h2>`);
+			this._hasWon = true;
 		}
 		return successfulMove;
 	}

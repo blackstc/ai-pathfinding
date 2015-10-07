@@ -1,0 +1,41 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+.board {}
+
+.row {}
+
+.cell {
+  display: inline-block;
+  width: 20vw;
+  height: 20vw;
+  outline: solid black 1px;
+}
+
+.cell--wall {
+  background-color: black;
+}
+
+.cell--visited {
+  background-color: hsl(0, 30%, 50%);
+}
+
+.cell--visiting {
+  background-color: hsl(0, 100%, 50%);
+}
+
+.cell--start {
+  border: solid blue 5px;
+}
+
+.cell--goal {
+  border: solid green 5px;
+}

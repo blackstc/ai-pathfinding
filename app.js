@@ -33,7 +33,7 @@ var board3 = [
 	'    !'
 ];
 
-var board = new Board(board1);
+var board = new Board(board3);
 var player = new Player(board);
 var ai = new Ai(player);
 

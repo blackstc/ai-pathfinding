@@ -39,10 +39,39 @@ class Ai {
 	constructor (player) {
 		this.player = player;
 	}
+	getPrevious (moves) {
+		var last = moves.length - 1;
+		console.log(last);
+		return moves[last];
+	}
 	tick () {
 		//This method is repeated once every second.
-		this.player.move('down');
+		// this.player.move('down');
+		// this.player.move('right');
+		var goal = this.player.getGoalPosition();
+		var position = this.player.getPosition();
+		var explore = this.player.explore();
+		var previous = this.getPrevious();
+		var moves = []
+		debugger;
+
+		if (goal.x > position.x && explore.right === "empty" && previous !== "left") {
+			this.player.move('right');
+			moves.push('right')
+		} else if (goal.y > position.y && explore.down === "empty") {
+			this.player.move("down");
+			moves.push('down')
+		} else if (goal.y > position.y && explore.down === "wall") {
+			this.player.move("left");
+			moves.push("left");
+		}
+
+		// console.log(this.player.explore());
+		// console.log(this.player.getGoalPosition().x);
+		console.log(this.player.explore());
 	}
+
+
 }
 
 module.exports = Ai;
